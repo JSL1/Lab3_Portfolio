@@ -1,0 +1,253 @@
+@font-face {
+    font-family: coolFont;
+    src: url('Assets/BrotherSignature.otf');
+}
+
+body {
+    margin: 0px 0px 70px 0px; /* Remove margin except bottom, so that <footer> doesn't cover any page content */
+    padding: 0px;   
+    background: #F8D6CC;
+    background: linear-gradient(90deg, rgba(248, 214, 204, 1) 40%, rgba(255, 255, 255, 1) 100%);
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8d6cc;
+}
+
+.logo {
+    width: 40%;
+    margin-left: 10%;
+}
+
+.logo span {
+    font-size: 3.5rem;
+    font-family: coolFont;
+    color:#e74240;
+    text-shadow: #ea7583 2px 3px, #FFF -3px -4px;
+    /* This text effect creates my "logo". Draw a drop shadow in multiple directions to give the text a "neon sign" look. */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.nav-link {
+    font-family: coolFont;
+    font-size: 3rem;
+}
+
+a { 
+    text-decoration: none;
+    color: #e74240;
+    transition: text-shadow 0.2s, text-decoration 0.1s;
+}
+
+a:hover {
+    text-shadow: #ea7583 4px 5px, #fff -2px -3px;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+.homepage {
+    width: 80vw;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.homepage img {
+    width: 600px;
+    height: auto;
+}
+
+.name {
+    font-size: 3rem;
+    font-family: coolFont;
+    color:#e74240;
+    text-shadow: #FFF -2px -3px;
+}
+
+p {
+    font-size: 1.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 16px;
+}
+
+.about-me {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    width: 40vw;
+}
+
+.service {
+    text-align: center;
+}
+.service img {
+    margin: 0px auto;
+    height: 200px;
+    width: auto;
+}
+
+.references {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0px auto;
+}
+
+.reference {
+    width: 400px;
+    height: 200px;
+}
+
+.reference p {
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.reference span {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    text-align: center;
+
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    width: 712px;
+    margin: 20px auto;
+    border: 1px solid #e74240;
+
+}
+.project-cover {
+    margin: 0px auto;
+    width: 712px;
+}
+.name2 {
+    font-size: 2rem;
+    color:#e74240;
+}
+.project-link {
+    text-align: left;
+    padding-left: 8px;
+    text-align: underline;
+    color: #000;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0px auto;
+}
+
+.contact img {
+    height: 800px;
+    width: auto;
+}
+
+form {
+    margin: 0px auto;
+}
+
+input {
+    display: block;
+    width: 500px;
+    padding: 5px;
+    height: 1.8rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #e74240;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+    display: block;
+    padding: 16px;
+    margin: 16px 5px;
+    background-color: #e74240;
+    border:none;
+    border-radius: 12px;
+    box-shadow: #FFF -5px -5px, #ea7583 3px 6px;
+}
+
+textarea {
+    width: 500px;
+    display: block;
+    background-color: #ea7583;
+    border: none;
+    height:300px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    background-color:#F8D6CC;
+    margin-top: 
+}
+
+.admin-panel {
+    width: 800px;
+    margin: 0px auto;   
+}
+
+/* Google icons */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}

@@ -1,0 +1,49 @@
+.admin-panel {
+    width:1200px;
+    margin: 0px auto;
+}
+
+.admin-header {
+    font-size: 1.4rem;
+}
+
+.admin-box {
+    border: 1px solid #9f9f9f;
+    border-radius: 6px;
+    margin: 12px auto;
+    width: 800px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-edit {
+    margin: 12px 0;
+}
+
+.admin-input {
+    background-color: #FFFFFF;
+    padding: 12px;
+    margin: 8px 0;
+}
+
+.admin-button {
+    background-color: aquamarine;
+    padding: 12px;
+    width: 200px;
+    height: 50px;
+}
+
+.edit-button {
+    width: 50px;
+    height: 50px;
+    background: none;
+}
+
+.admin-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    padding: 12px;
+    margin: 12px auto;
+}
