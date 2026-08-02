@@ -1,10 +1,12 @@
 import React, { Component, useState} from "react";
 import './adminpanel.css';
 import { Link } from 'react-router-dom';
-
+import Confirmation from "./Confirmation";
 
 const AddUser = () => {
     
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
     const [user, setUser] = useState({
         firstname: '',
         lastname: '',
@@ -17,6 +19,23 @@ const AddUser = () => {
         const value = e.target.value;
         setUser(values => ({...values, [name]: value}));
     }
+
+    const createUser = async () => {
+        try {
+            const response = await fetch(`${ProcessingInstruction.env.REACT_APP_API_URL}api/users`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application.json"
+                },
+                body: JSON.stringify(user)
+            });
+            const result = await response.json();
+            setShowConfirmation(true);
+        } catch(err) {
+            console.log(err);
+        }
+    };
 
     return (
         <div className="admin-panel">
@@ -42,7 +61,9 @@ const AddUser = () => {
                 Password:
                 <input className="admin-input" type="password" name="lastname" value={user.password} onChange={handleChange} />
             </label>
-            <input type="submit" className="admin-button" value="Submit User"></input>
+            <input type="submit" className="admin-button" value="Submit User" onClick={createUser}></input>
+                            {showConfirmation && <Confirmation />}
+            
         </form>
                 <Link to="../Admin">Back to Admin</Link>
         </div>

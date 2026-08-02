@@ -1,31 +1,86 @@
-import React, { Component , useState} from 'react';
+import React, { Component , useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import './adminpanel.css';
 import SaveIcon from '../../Assets/save.png';
 import DeleteIcon from '../../Assets/delete.png';
 import { Link } from 'react-router-dom';
+import Confirmation from './Confirmation';
 
 const EditProject = () => {
-    const [projects, setProjects] = useState([
-        {
-            title: 'Untitled Weather App',
-            description: 'A weather app built with JavaScript, CSS animations and weatherAPI.',
-            date: '',
-            live: 'https://jsl1.github.io/Assignment6/weather',
-            repo: 'https://github.com/JSL1/Assignment6'
-        },
-        {
-            title: 'Burning Rush',
-            description: 'A vertical shooter built with HTML and PhaserJS. An arcade classic',
-            live: 'https://jstp.itch.io/burning-rush',
-            repo: 'https://github.com/JSL1/Burning-Rush'
-        }
-    ]);
+    const [projects, setProjects] = useState([]);
+    const [showConfirmation, setShowConfirmation] = useState(false);
 
-    const handleChange = (e) => {
-
+    //READ
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}api/projects`)
+            .then(res => res.json())
+            .then(result => {
+                setProjects(result.data);
+                console.log(result.data);
+            })
+            .catch(err => console.log(err));
+    }, []);
+    
+    const handleChange = (index, e) => {
+        const {name, value } = e.target;
+        setProjects(current => 
+            current.map((project, i) => i === index ? {... project, [name]: value } : project));
     }
+    
+    //DELETE
+    const deleteProject = async (id) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/projects/${id}`, 
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
+            const result = await response.json();
+            console.log(result);
+
+            if(result.success) {
+                setProjects(current =>
+                    current.filter(project => project.id !== id)
+                );
+                setShowConfirmation(true);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    //UPDATE
+    const saveProject = async (project) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/projects`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "aplication/json"
+                    },
+                    body: JSON.stringify({
+                        title: project.title,
+                        description: project.description,
+                        date: project.date,
+                        live: project.live,
+                        repo: project.repo                
+                    })
+                }
+            );
+            const result = await response.json();
+            console.log(result);
+            setShowConfirmation(true);
+        } catch(err) {
+            console.log(err);
+        }
+    };
+
+
 
     return (
         <div className='admin-panel'>
@@ -44,12 +99,14 @@ const EditProject = () => {
                 <TextField id="outlined-basic" label="Repo (URL)" variant="outlined" />
                 <div className='admin-controls'>
                     <div className='edit-button'>
-                        <img src={SaveIcon} />
+                        <img src={SaveIcon} onClick={() => saveProject(p)}/>
                     </div>
                     <div className='edit-button'>
-                        <img src={DeleteIcon} />
+                        <img src={DeleteIcon} onClick={() => deleteProject(p.id)}/>
                     </div>
                 </div>
+                                {showConfirmation && <Confirmation />}
+                
             </div>
         )}
         <Link to="../Admin">Back to Admin</Link>

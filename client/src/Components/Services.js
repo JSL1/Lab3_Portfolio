@@ -1,30 +1,26 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Debug from '../Images/debugging.png';
 import Gamedev from '../Images/game-development.png';
 import Webdev from '../Images/app-development.png';
-const refs =[
-    {
-        name: 'James B',
-        testimonial: 'Jeremy did a really great job on my website and now my sales are out of control! cha-ching!',
-        position: 'Sales Manager',
-        company: 'Newark Auto'
-    },
-    {
-        name: 'Dean T',
-        testimonial: 'Burning Rush is so fun I play it every day!',
-        position: 'Lead Developer',
-        company: 'Strictly Software'
-    },
-    {
-        name: 'Mike G',
-        testimonial: 'Jeremy St Pierre is extremely professional and easy to work with. I would hire him again in an instant.',
-        position: 'Product Manager',
-        company: 'SkyNet'
-    }
-];
+
 
 const Services = () => {
+
+    //setting the default references
+    const [references, setReferences] = useState([]);
+
+    //getting references from the backend
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}api/references`)
+            .then(res => res.json())
+            .then(result => {
+                setReferences(result.data);
+                console.log(result.data);
+            })
+            .catch(err => console.log(err));
+    }, []);
+
     return (
         <>
         <div className='services'>
@@ -45,7 +41,7 @@ const Services = () => {
             </div>
         </div>
          <div className="references">
-                {refs.map(r => 
+                {references.map(r => 
                     <div className="reference">
                         <p>{r.testimonial}</p>
                         <span>{r.name}</span>

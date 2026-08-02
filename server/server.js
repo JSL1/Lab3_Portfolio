@@ -28,6 +28,8 @@ app.use('/', function(req, res) {
     res.send('Hello World, I am express');
 });
 
+
+app.use('/')
 //forward 404 to a generic error message
 app.use(function (req, res, next) {
     next(createError(404));

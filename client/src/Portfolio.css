@@ -141,6 +141,9 @@ p {
 
 }
 
+.center {
+    text-align: center;
+}
 .project {
     display: flex;
     flex-direction: column;
@@ -250,4 +253,16 @@ footer {
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+}
+
+.confirmation {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e74240;
+    border: 1px solid #000;
+    border-radius: 12px;
+    margin: auto auto;
 }
