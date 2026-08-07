@@ -29,7 +29,6 @@ app.use('/', function(req, res) {
 });
 
 
-app.use('/')
 //forward 404 to a generic error message
 app.use(function (req, res, next) {
     next(createError(404));
