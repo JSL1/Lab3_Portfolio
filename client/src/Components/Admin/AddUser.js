@@ -22,7 +22,7 @@ const AddUser = () => {
 
     const createUser = async () => {
         try {
-            const response = await fetch(`${ProcessingInstruction.env.REACT_APP_API_URL}api/users`,
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
             {
                 method: "POST",
                 headers: {
@@ -55,7 +55,7 @@ const AddUser = () => {
             </label>
             <label className="admin-header">
                 email:
-                <input className="admin-input" type="text" name="lastname" value={user.email} onChange={handleChange} />
+                <input className="admin-input" type="text" name="email" value={user.email} onChange={handleChange} />
             </label>
             <label className="admin-header">
                 Password:

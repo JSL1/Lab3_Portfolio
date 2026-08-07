@@ -28,6 +28,13 @@ const Admin = () => {
                         <Link to='./EditUser'>Edit a User</Link>
                     </div>
             </section>
+            <section>
+                <span className='admin-header'>Services</span>
+                    <div className="admin-box">
+                        <Link to='./AddService'>Add a Service</Link><br />
+                        <Link to='./EditService'>Edit a Service</Link>
+                    </div>
+            </section>
         </div>
     );
 }

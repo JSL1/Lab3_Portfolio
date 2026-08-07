@@ -23,7 +23,7 @@ const AddReference = () => {
 
     const createReference = async () => {
         try {
-            const response = await fetch(`${ProcessingInstruction.env.REACT_APP_API_URL}api/references`,
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/references`,
             {
                 method: "POST",
                 headers: {
@@ -52,7 +52,7 @@ const AddReference = () => {
             </label>
             <label>
                 Position:
-                <input type="text" className="admin-input" name="position" vaalue={reference.testimonial} onChange={handleChange} />
+                <input type="text" className="admin-input" name="position" vaalue={reference.position} onChange={handleChange} />
             </label>
             <label>
                 Company:

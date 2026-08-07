@@ -107,7 +107,7 @@ p {
 }
 .service img {
     margin: 0px auto;
-    height: 200px;
+    height: 100px;
     width: auto;
 }
 
@@ -221,7 +221,6 @@ footer {
     width: 100%;
     padding: 10px 0 10px 0;
     background-color:#F8D6CC;
-    margin-top: 
 }
 
 .admin-panel {

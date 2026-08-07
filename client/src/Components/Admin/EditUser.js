@@ -34,11 +34,11 @@ const EditUser = () => {
     //UPDATE
     const saveProject = async (user) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}api/projects`,
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
                 {
                     method: "POST",
                     headers: {
-                        "Content-Type": "aaplication/json"
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
                         firstname: user.firstname,
@@ -100,7 +100,7 @@ const EditUser = () => {
                             <img src={DeleteIcon} onClick={() => deleteUser(u.id)} />
                         </div>
                     </div>
-                                    {showConfirmation && <Confirmation />}
+                    {showConfirmation && <Confirmation />}
                 </div>               
             )}
             

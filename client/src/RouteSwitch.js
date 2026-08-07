@@ -17,6 +17,8 @@ import AddReference from './Components/Admin/AddReference';
 import EditReference from './Components/Admin/EditReference';
 import AddUser from './Components/Admin/AddUser';
 import EditUser from './Components/Admin/EditUser';
+import AddService from './Components/Admin/AddService';
+import EditService from './Components/Admin/EditService';
 
 const RouteSwitch = () => {
     return (
@@ -36,6 +38,8 @@ const RouteSwitch = () => {
             <Route path='/Admin/EditReference' element={<EditReference />} />
             <Route path='/Admin/AddUser' element={<AddUser />} />
             <Route path='/Admin/EditUser' element={<EditUser />} />
+            <Route path='/Admin/AddService' element={<AddService />} />
+            <Route path='/Admin/EditService' element={<EditService />} />
         </Routes>
     );
 }

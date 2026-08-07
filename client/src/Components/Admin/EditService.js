@@ -7,30 +7,27 @@ import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
 import Confirmation from './Confirmation';
 
-const EditReference = () => {
-    const [references, setReferences] = useState([]);
+const EditService = () => {
+    const [services, setServices] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
-    
-    //getting references from the backend
+
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}api/references`)
+        fetch(`${process.env.REACT_APP_API_URL}api/services`)
             .then(res => res.json())
             .then(result => {
-                setReferences(result.data);
+                setServices(result.data);
                 console.log(result.data);
             })
             .catch(err => console.log(err));
     }, []);
 
-    //chaging the references in state
-     const handleChange = (index, e) => {
+    const handleChange = (index, e) => {
         const {name, value } = e.target;
-        setReferences(current => 
-            current.map((reference, i) => i === index ? {... reference, [name]: value } : reference));
+        setServices(current => 
+            current.map((service, i) => i === index ? {...services, [name]: value } : service));        
     }
-    
-    //DELETE
-    const deleteReference = async (id) => {
+
+    const deleteService = async (id) => {
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}api/references/${id}`, 
                 {
@@ -42,30 +39,27 @@ const EditReference = () => {
             console.log(result);
 
             if(result.success) {
-                setReferences(current =>
-                    current.filter(reference => reference.id !== id)
+                setServices(current =>
+                    current.filter(service => service.id !== id)
                 );
                 setShowConfirmation(true);
             }
         } catch (err) {
             console.log(err);
         }
-    };
+    }
 
-        //UPDATE
-    const saveReference = async (reference) => {
+    const saveService = async (service) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}api/references`,
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/services`,
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "aplication/json"
                     },
                     body: JSON.stringify({
-                        name: reference.name,
-                        testimonial: reference.testimonial,
-                        position: reference.position,
-                        company: reference.company          
+                        name: service.name,
+                        description: service.description
                     })
                 }
             );
@@ -77,21 +71,18 @@ const EditReference = () => {
         }
     };
 
-
     return (
         <div className='admin-panel'>
-            {references.map(r =>
+            {services.map(s =>
                 <div className='admin-box'>
-                    <TextField id="outlined-basic" label={"Name: " + r.name} variant="outlined" />
-                    <TextField id="outlined-basic" label={"Testimonial: " + r.testimonial} variant="outlined" />
-                    <TextField id="outlined-basic" label={"Position: " + r.position} variant="outlined" />
-                    <TextField id="outlined-basic" label={"Company: " + r.company} variant="outlined" />
+                    <TextField id="outlined-basic" label={"Name: " + s.name} variant="outlined" />
+                    <TextField id="outlined-basic" label={"Description: " + s.description} variant="outlined" />
                 <div className='admin-controls'>
                     <div className='edit-button'>
                         <img src={SaveIcon} />
                     </div>
                     <div className='edit-button'>
-                        <img src={DeleteIcon} onClick={() => deleteReference(r.id)} />
+                        <img src={DeleteIcon} onClick={() => deleteService(s.id)} />
                     </div>
                 </div>
                                 {showConfirmation && <Confirmation />}
@@ -103,4 +94,4 @@ const EditReference = () => {
     );
 }
 
-export default EditReference;
+export default EditService;
