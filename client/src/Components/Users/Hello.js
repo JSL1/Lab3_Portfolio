@@ -1,10 +1,11 @@
-import React, { Component } from "reat";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 const Hello = () => {
     return(
         <div className="hello-user">
-            <div>Hello, User</div>
-            <div>Log out</div>
+            <div>Hello</div>
+            <div><Link to="./Login/">Log in</Link></div>
         </div>
     );
 }

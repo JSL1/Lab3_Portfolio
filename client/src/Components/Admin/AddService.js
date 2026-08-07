@@ -20,7 +20,7 @@ const AddService = () => {
 
     const createService = async () => {
         try {
-            const response = await fetch(`${ProcessingInstruction.env.REACT_APP_API_URL}api/services`,
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/services`,
             {
                 method: "POST",
                 headers: {

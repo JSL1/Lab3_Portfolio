@@ -19,6 +19,21 @@ header {
     background-color: #f8d6cc;
 }
 
+.hello-user{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F8D6CC;
+    color: #e74240;
+
+}
+
+.hello-user div {
+    margin: 12px;
+}
+
 .logo {
     width: 40%;
     margin-left: 10%;
@@ -71,6 +86,7 @@ a:active {
 .homepage img {
     width: 600px;
     height: auto;
+    border-radius:50%;
 }
 
 .name {
@@ -264,4 +280,46 @@ footer {
     border: 1px solid #000;
     border-radius: 12px;
     margin: auto auto;
+}
+
+/* login and signup pages */
+
+.login-form, .signup-form {
+    width: 100vw;
+    height: 70vh;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form form, .signup-form form {
+    margin: 0px auto;
+    text-align: center;
+}
+
+.login-form-input, .signup-form-input {
+    background-color: #F8D6CC; 
+    border-radius: 4px;
+    padding: 4px;
+    border: 1px solid #e74240;
+    margin: 16px;
+    height: 40px;
+}
+.resetbutton {
+    width: 510px;
+    height: 40px;
+    margin: 0px auto;
+    border: none;
+    background-color: #FFF;
+    margin: 12px;
+}
+.submitbutton {
+    width: 510px;
+    height: 40px;
+    margin: 0px auto;
+    border: none;
+    background-color: #e74240;
+    margin-top: 12px;
 }

@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import RouteSwitch from './RouteSwitch';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
+import Hello from './Components/Users/Hello';
 import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
 import './Portfolio.css';
 
@@ -17,8 +18,9 @@ function App() {
         The url determines which of component is rendered to the page by the router, this is contained in the RouteSwitch component, see RouteSWitch.js for the structure of this.
     */}
       <BrowserRouter>
+        <Hello />
         <Header />
-          <RouteSwitch />
+        <RouteSwitch />
         <Footer />
       </BrowserRouter>
     </div>

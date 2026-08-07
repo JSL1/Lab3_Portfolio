@@ -49,7 +49,7 @@ const AddProject = () => {
                 </label>
                 <label className="admin-header">
                     Date Completed:
-                    <input type="text" className="admin-input" name="date" value={project.date}  />
+                    <input type="text" className="admin-input" name="date" value={project.date}  onChange={handleChange}/>
                 </label>
                 <label className="admin-header">
                     Description:
@@ -57,11 +57,11 @@ const AddProject = () => {
                 </label>
                 <label className="admin-header">
                     Live URL:
-                    <input type="text" className="admin-input" name="description" value={project.live} onChange={handleChange} />
+                    <input type="text" className="admin-input" name="live" value={project.live} onChange={handleChange} />
                 </label>
                 <label className="admin-header">
                     Repo URL:
-                    <input type="text" className="admin-input" name="description" value={project.repo} onChange={handleChange} />
+                    <input type="text" className="admin-input" name="repo" value={project.repo} onChange={handleChange} />
                 </label>
                 <input type="submit" className="admin-button" value="Submit Project" onClick={createProject}></input>
                 {showConfirmation && <Confirmation />}

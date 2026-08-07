@@ -57,6 +57,7 @@ const EditProject = () => {
     //UPDATE
     const saveProject = async (project) => {
         try {
+            console.log(`${process.env.REACT_APP_API_URL}api/users/${project.id}`);
             const response = await fetch(`${process.env.REACT_APP_API_URL}api/projects`,
                 {
                     method: "POST",
@@ -105,7 +106,7 @@ const EditProject = () => {
                         <img src={DeleteIcon} onClick={() => deleteProject(p.id)}/>
                     </div>
                 </div>
-                                {showConfirmation && <Confirmation />}
+                {showConfirmation && <Confirmation />}
                 
             </div>
         )}

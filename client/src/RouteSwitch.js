@@ -19,6 +19,8 @@ import AddUser from './Components/Admin/AddUser';
 import EditUser from './Components/Admin/EditUser';
 import AddService from './Components/Admin/AddService';
 import EditService from './Components/Admin/EditService';
+import Login from './Components/Users/Login';
+import Signup from './Components/Users/SignUp';
 
 const RouteSwitch = () => {
     return (
@@ -40,6 +42,8 @@ const RouteSwitch = () => {
             <Route path='/Admin/EditUser' element={<EditUser />} />
             <Route path='/Admin/AddService' element={<AddService />} />
             <Route path='/Admin/EditService' element={<EditService />} />
+            <Route path='/Login' element={<Login />} />
+            <Route path='/Signup' element={<Signup />} />
         </Routes>
     );
 }

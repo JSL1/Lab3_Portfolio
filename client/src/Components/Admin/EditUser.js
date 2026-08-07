@@ -32,9 +32,9 @@ const EditUser = () => {
     }
 
     //UPDATE
-    const saveProject = async (user) => {
+    const saveUser = async (user) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/users/${user.id}`,
                 {
                     method: "POST",
                     headers: {
@@ -46,7 +46,7 @@ const EditUser = () => {
                         email: user.date,
                         password: user.password,
                         created: user.created,
-                        updated: Date.now().toString(),          
+                        updated: user.updated
                     })
                 }
             );
@@ -92,6 +92,7 @@ const EditUser = () => {
                     <TextField id="outlined-basic" label={"Password: " + u.password} variant="outlined" />
                     <TextField slotProps={{ input: { readOnly: true, },}} id="outlined-basic" label={"Created: " + u.created} variant="outlined" />
                     <TextField slotProps={{ input: { readOnly: true, },}} id="outlined-basic" label={"Updated: " + u.updated} variant="outlined" />
+
                     <div className='admin-controls'>
                         <div className='edit-button'>
                             <img src={SaveIcon} />

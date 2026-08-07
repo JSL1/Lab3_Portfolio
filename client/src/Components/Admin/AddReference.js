@@ -48,7 +48,7 @@ const AddReference = () => {
             </label>
             <label>
                 Testimonial:
-                <input type="text" className="admin-input" name="testimonial" value={reference.testimonial} onChagne={handleChange} />
+                <input type="text" className="admin-input" name="testimonial" value={reference.testimonial} onChange={handleChange} />
             </label>
             <label>
                 Position:
