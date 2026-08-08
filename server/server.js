@@ -9,11 +9,13 @@ const createError = require('http-errors');
 const morgan = require('morgan');
 const cors = require('cors');
 const connectDB = require('./db/connection');
+const authRouts = require('./routes/authRoutes');
 
 var app = express();
 
 connectDB();
 
+app.use('/api/auth', authRoutes);
 app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
 
