@@ -22,22 +22,40 @@ const SignUp = () => {
 
 
     const createUser = async () => {
-        console.log("SENDING:", credentials);
+        e.preventDefault();
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(credentials)
-            });
-            console.log("STATUS:", response.status);
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}api/auth/signup`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        firstname: credentials.firstname,
+                        lastname: credentials.lastname,
+                        email: credentials.email,
+                        password: credentials.password
+                    })
+                }
+            );
+
             const result = await response.json();
-            console.log("RESPONSE:", result);
-            setShowConfirmation(true);
-        } catch(err) {
+
+            console.log("SIGNUP RESPONSE:", result);
+
+            if (!response.ok) {
+                setMessageText(result.message);
+                return;
+            }
+
+            if (result.success) {
+                setMessageText("Account created successfully.");
+            }
+
+        } catch (err) {
             console.log(err);
+            setMessageText("Unable to connect to server.");
         }
     };
 
