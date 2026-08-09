@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logout } from "../redux/authSlice";
+import { logout } from "../../redux/authSlice";
 import { useSelector } from "react-redux";
 
 const Hello = () => {

@@ -1,12 +1,12 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../redux/authSlice";
+import { login } from "../../redux/authSlice";
 
 const Login = () => {
 
     const dispatch = useDispatch();
-
+    const [message, setMessage] = useState('');
     const [credentials, setCredentials] = useState({
         email: '',
         password: ''
@@ -22,7 +22,8 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
+        console.log("login button works")
+        console.log(process.env.REACT_APP_API_URL);
         try{
             const response = await fetch(
                 `${process.env.REACT_APP_API_URL}api/auth/login`,
@@ -43,13 +44,14 @@ const Login = () => {
                 setError(result.message);
                 return;
             }
-            
+
             if (result.success) {
                 dispatch(login({
                     token: result.token,
                     user: result.user
                 }));
-            }
+                setMessage('Log in successful.');
+            } 
             
             console.log(result);
 
@@ -62,6 +64,7 @@ const Login = () => {
     return(
         <div className="login-form">
             <form>
+                {message}
                 <input type="email" placeholder="Email Address" className="login-form-input" name="email" value={credentials.email} onChange={handleChange} />
                 <input type="password" placeholder="Password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />
                 <input type="submit" name="submit" value="Log in" className="submitbutton" onClick={handleLogin} />

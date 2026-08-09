@@ -9,6 +9,7 @@ import Confirmation from './Confirmation';
 import { useSelector } from "react-redux";
 
 const EditService = () => {
+    const token = useSelector(state => state.auth.token);
     const [services, setServices] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
 

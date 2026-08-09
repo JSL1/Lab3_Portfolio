@@ -1,9 +1,11 @@
-import React, {Component, useState } from "react";
+import React, {Component, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import AddUser from "../Admin/AddUser";
 import Confirmation from "../Admin/Confirmation";
 
+
 const SignUp = () => {
+    const password2 = useRef(null);
     const [messageText, setMessageText] = useState('');
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [credentials, setCredentials] = useState({
@@ -20,7 +22,9 @@ const SignUp = () => {
     }
 
     const checkPasswords = () => {
-        if (user.password != '' && user.password === user.password2) {
+        const value = password2.current.value;
+        
+        if (credentials.password != '' && credentials.password === credentials.value) {
             return true;
         } else { 
             return false;
@@ -29,7 +33,7 @@ const SignUp = () => {
 
     const createUser = async () => {
         if (checkPasswords) {
-            console.log("SENDING:", user);
+            console.log("SENDING:", credentials);
             try {
                 const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
                 {
@@ -37,7 +41,7 @@ const SignUp = () => {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(user)
+                    body: JSON.stringify(credentials)
                 });
                 console.log("STATUS:", response.status);
                 const result = await response.json();
@@ -58,9 +62,9 @@ const SignUp = () => {
                 <input type="text" placeholder="Last Name" className="login-form-input" name="lastname" value={credentials.lastname} onChange={handleChange} />
                 <input type="email" placeholder="Email Address" className="login-form-input" name="email" value={credentials.email} onChange={handleChange} />
                 <input placeholder="Password" type="password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />
-                <input type="password" placeholder="Password (again)" className="login-form-input" name="password2" onChange={handleChange} />
+                <input type="password" placeholder="Password (again)" className="login-form-input" name="password2" value={password2} onChange={handleChange} />
                 <span className="login-text">Already have an account? <Link to="../Login">Log in now. </Link></span>
-                <input type="reset" value="Reset Form" className="login-button" className="resetbutton" />
+                <input type="reset" value="Reset Form" ref={password2} className="login-button" className="resetbutton" />
                 <input type="submit" value="Sign Up" className="submitbutton" />
                 {showConfirmation && <Confirmation />}
                 <span className="messageText">{messageText}</span>

@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import Logo from '../Images/logo.png';
 import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+    
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    
     return (
         <header>
             <div className="logo"><span>Jeremy St Pierre</span></div>
@@ -34,7 +39,9 @@ const Header = () => {
                     <Link to='./Contact'><span className='nav-link'>Contact</span></Link>
                 </div>
                 <div className="nav-link">
-                    <Link to='./Admin'><span className='nav-link'>Admin</span></Link>
+                    {isAuthenticated && 
+                        <Link to='./Admin'><span className='nav-link'>Admin</span></Link>
+                    }
                 </div>
             </div>
         </header>

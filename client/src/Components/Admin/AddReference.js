@@ -5,8 +5,8 @@ import Confirmation from "./Confirmation";
 import { useSelector } from "react-redux";
 
 const AddReference = () => {
+    const token = useSelector(state => state.auth.token);
     const [showConfirmation, setShowConfirmation] = useState(false);
-    
     const [reference, setReference] = useState({
        name: '',
        testimonial: '',

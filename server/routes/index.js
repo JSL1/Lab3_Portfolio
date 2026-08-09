@@ -16,29 +16,29 @@ router.get('/hello', indexController.sayHello);
 router.get('/bye', indexController.sayBye);
 
 //projects 
-router.get('/projects/', authMiddleware, projectsController.getAll);
-router.get('/projects/:id', authMiddleware, projectsController.getById);
+router.get('/projects/', projectsController.getAll);
+router.get('/projects/:id', projectsController.getById);
 router.post('/projects/', authMiddleware, projectsController.add);
 router.put('/projects/:id', authMiddleware, projectsController.update);
 router.delete('/projects/:id', authMiddleware, projectsController.remove);
 
 //references
-router.get('/references/', authMiddleware, referencesController.getAll);
-router.get('/references/:id', authMiddleware, referencesController.getById);
+router.get('/references/', referencesController.getAll);
+router.get('/references/:id', referencesController.getById);
 router.post('/references/', authMiddleware, referencesController.add);
 router.put('/references/:id', authMiddleware, referencesController.update);
 router.delete('/references/:id', authMiddleware, referencesController.remove);
 
 //services
-router.get('/services/', authMiddleware, servicesController.getAll);
-router.get('/services/:id', authMiddleware, servicesController.getById);
+router.get('/services/', servicesController.getAll);
+router.get('/services/:id' servicesController.getById);
 router.post('/services/', authMiddleware, servicesController.add);
 router.put('/services/:id', authMiddleware, servicesController.update);
 router.delete('/services/:id', authMiddleware, servicesController.remove);
 
 //users
-router.get('/users/', authMiddleware, usersController.getAll);
-router.get('/users/:id', authMiddleware, usersController.getById);
+router.get('/users/', usersController.getAll);
+router.get('/users/:id', usersController.getById);
 router.post('/users/', authMiddleware, usersController.add);
 router.put('/users/:id', authMiddleware, usersController.update);
 router.delete('/users/:id', authMiddleware, usersController.remove);

@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 
 const AddProject = () => {
     const [showConfirmation, setShowConfirmation] = useState(false);
-    
-
+    const token = useSelector(state => state.auth.token);
     const [project, setProject] = useState({
         tite: '',
         date: '',

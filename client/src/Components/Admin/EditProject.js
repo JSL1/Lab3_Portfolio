@@ -9,6 +9,7 @@ import Confirmation from './Confirmation';
 import { useSelector } from "react-redux";
 
 const EditProject = () => {
+    const token = useSelector(state => state.auth.token);
     const [projects, setProjects] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -64,7 +65,7 @@ const EditProject = () => {
                 {
                     method: "POST",
                     headers: {
-                        "Authorization": `Bearer ${token}`
+                        "Authorization": `Bearer ${token}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({

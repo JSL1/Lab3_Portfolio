@@ -1,8 +1,8 @@
-import { createSlice } from 'reduxjs/tooklit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     token: null,
-    user: null
+    user: null,
     isAuthenticated: false
 };
 
@@ -10,7 +10,7 @@ const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        login (state, action) => {
+        login :(state, action) => {
             state.token = action.payload.token;
             state.user = action.payload.user;
             state.isAuthenticated = true;
