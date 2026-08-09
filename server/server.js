@@ -11,6 +11,8 @@ const cors = require('cors');
 const connectDB = require('./db/connection');
 const authRoutes = require('./routes/authRoutes');
 
+app.use(cors());
+
 var app = express();
 
 connectDB();
@@ -20,15 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
 
 app.use(morgan('combined'));
-
-const allowedOrigins = [
-    "http://localhost:3000",
-    "https://lab4portfolio.onrender.com"
-];
-
-app.use(cors({
-    origin: allowedOrigins
-}));
 
 //import routers
 let indexRouter = require('./routes/index');
