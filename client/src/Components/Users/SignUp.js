@@ -5,7 +5,6 @@ import Confirmation from "../Admin/Confirmation";
 
 
 const SignUp = () => {
-    const password2 = useRef(null);
     const [messageText, setMessageText] = useState('');
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [credentials, setCredentials] = useState({
@@ -21,19 +20,9 @@ const SignUp = () => {
         setCredentials(values => ({...values, [name]: value}));
     }
 
-    const checkPasswords = () => {
-        const value = password2.current.value;
-        
-        if (credentials.password != '' && credentials.password === credentials.value) {
-            return true;
-        } else { 
-            return false;
-        } 
-    }
 
     const createUser = async () => {
-        if (checkPasswords) {
-            console.log("SENDING:", credentials);
+        console.log("SENDING:", credentials);
             try {
                 const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
                 {
@@ -50,8 +39,6 @@ const SignUp = () => {
             } catch(err) {
                 console.log(err);
             }
-        } else {
-            setMessageText('Passwords must match and not be blank.');
         }
     };
 
@@ -61,8 +48,7 @@ const SignUp = () => {
                 <input type="text" placeholder="First Name" className="login-form-input" name="firstname" value={credentials.firstname} onChange={handleChange} />
                 <input type="text" placeholder="Last Name" className="login-form-input" name="lastname" value={credentials.lastname} onChange={handleChange} />
                 <input type="email" placeholder="Email Address" className="login-form-input" name="email" value={credentials.email} onChange={handleChange} />
-                <input placeholder="Password" type="password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />
-                <input type="password" placeholder="Password (again)" className="login-form-input" name="password2" />
+                <input placeholder="Password" type="password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />s
                 <span className="login-text">Already have an account? <Link to="../Login">Log in now. </Link></span>
                 <input type="reset" value="Reset Form" ref={password2} className="login-button" className="resetbutton" />
                 <input type="submit" value="Sign Up" className="submitbutton" />
