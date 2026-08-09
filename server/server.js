@@ -9,7 +9,6 @@ const createError = require('http-errors');
 const morgan = require('morgan');
 const cors = require('cors');
 const connectDB = require('./db/connection');
-const authRoutes = require('./routes/authRoutes');
 const PORT = process.env.PORT || 5050;
 
 var app = express();
@@ -17,11 +16,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
 app.use(morgan('combined'));
-app.use('/api/auth', authRoutes);
 
 //import routers
+let authRoutes = requrie('./routes/authRoutes');
 let indexRouter = require('./routes/index');
 app.use('/api', indexRouter);
+app.use("/api/auth", authRoutes);
 
 app.use('/', function(req, res) {
     res.send('Hello World, I am express');

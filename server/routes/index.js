@@ -39,7 +39,7 @@ router.delete('/services/:id', authMiddleware, servicesController.remove);
 //users
 router.get('/users/', usersController.getAll);
 router.get('/users/:id', usersController.getById);
-router.post('/users/', authMiddleware, usersController.add);
+router.post('/users/', usersController.add);
 router.put('/users/:id', authMiddleware, usersController.update);
 router.delete('/users/:id', authMiddleware, usersController.remove);
 

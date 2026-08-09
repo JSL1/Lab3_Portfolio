@@ -63,11 +63,11 @@ const Login = () => {
 
     return(
         <div className="login-form">
-            <form>
+            <form onSubmit={handleLogin}>
                 {message}
                 <input type="email" placeholder="Email Address" className="login-form-input" name="email" value={credentials.email} onChange={handleChange} />
                 <input type="password" placeholder="Password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />
-                <input type="submit" name="submit" value="Log in" className="submitbutton" onClick={handleLogin} />
+                <input type="submit" name="submit" value="Log in" className="submitbutton" />
                 <span className="login-text">No account? <Link to="../Signup">Sign up here. </Link></span>
             </form>
         </div>

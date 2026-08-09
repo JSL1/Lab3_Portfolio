@@ -21,7 +21,7 @@ const SignUp = () => {
     }
 
 
-    const createUser = async () => {
+    const createUser = async (e) => {
         e.preventDefault();
         try {
             const response = await fetch(
@@ -50,7 +50,8 @@ const SignUp = () => {
             }
 
             if (result.success) {
-                setMessageText("Account created successfully.");
+                setMessageText("");
+                setShowConfirmation(true);
             }
 
         } catch (err) {
@@ -61,14 +62,14 @@ const SignUp = () => {
 
     return(
         <div className="signup-form">
-            <form>
+            <form onSubmit={createUser}>
                 <input type="text" placeholder="First Name" className="login-form-input" name="firstname" value={credentials.firstname} onChange={handleChange} />
                 <input type="text" placeholder="Last Name" className="login-form-input" name="lastname" value={credentials.lastname} onChange={handleChange} />
                 <input type="email" placeholder="Email Address" className="login-form-input" name="email" value={credentials.email} onChange={handleChange} />
                 <input placeholder="Password" type="password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />s
                 <span className="login-text">Already have an account? <Link to="../Login">Log in now. </Link></span>
                 <input type="reset" value="Reset Form" className="login-button" className="resetbutton" />
-                <input type="submit" value="Sign Up" className="submitbutton" handleClick={createUser} />
+                <input type="submit" value="Sign Up" className="submitbutton" />
                 {showConfirmation && <Confirmation />}
                 <span className="messageText">{messageText}</span>
             </form>
