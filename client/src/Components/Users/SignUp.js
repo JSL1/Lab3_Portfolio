@@ -68,7 +68,7 @@ const SignUp = () => {
                 <input placeholder="Password" type="password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />s
                 <span className="login-text">Already have an account? <Link to="../Login">Log in now. </Link></span>
                 <input type="reset" value="Reset Form" className="login-button" className="resetbutton" />
-                <input type="submit" value="Sign Up" className="submitbutton" />
+                <input type="submit" value="Sign Up" className="submitbutton" handleClick={createUser} />
                 {showConfirmation && <Confirmation />}
                 <span className="messageText">{messageText}</span>
             </form>
