@@ -18,10 +18,10 @@ app.use(express.urlencoded( { extended: true }));
 app.use(morgan('combined'));
 
 //import routers
-let authRoutes = requrie('./routes/authRoutes');
+let authRoutes = require('./routes/authRoutes');
 let indexRouter = require('./routes/index');
-app.use('/api', indexRouter);
 app.use("/api/auth", authRoutes);
+app.use('/api', indexRouter);
 
 app.use('/', function(req, res) {
     res.send('Hello World, I am express');
