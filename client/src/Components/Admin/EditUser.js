@@ -7,9 +7,9 @@ import TextField from '@mui/material/TextField';
 import './adminpanel.css';
 import { Link } from 'react-router-dom';
 import Confirmation from './Confirmation';
+import { useSelector } from "react-redux";
 
 const EditUser = () => {
-    
     const [users, setUsers] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -38,6 +38,7 @@ const EditUser = () => {
                 {
                     method: "POST",
                     headers: {
+                        "Authorization": `Bearer ${token}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
@@ -64,6 +65,10 @@ const EditUser = () => {
             const response = await fetch(`${process.env.REACT_APP_API_URL}api/users/${id}`, 
                 {
                     method: "DELETE",
+                   headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                   }
                 }
             );
 

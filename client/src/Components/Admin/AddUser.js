@@ -2,9 +2,9 @@ import React, { Component, useState} from "react";
 import './adminpanel.css';
 import { Link } from 'react-router-dom';
 import Confirmation from "./Confirmation";
+import { useSelector } from "react-redux";
 
 const AddUser = () => {
-    
     const [showConfirmation, setShowConfirmation] = useState(false);
 
     const [user, setUser] = useState({
@@ -30,6 +30,7 @@ const AddUser = () => {
             {
                 method: "POST",
                 headers: {
+                    "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(user)

@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
 import Confirmation from './Confirmation';
+import { useSelector } from "react-redux";
 
 const EditService = () => {
     const [services, setServices] = useState([]);
@@ -32,6 +33,10 @@ const EditService = () => {
             const response = await fetch(`${process.env.REACT_APP_API_URL}api/references/${id}`, 
                 {
                     method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
                 }
             );
 
@@ -55,7 +60,8 @@ const EditService = () => {
                 {
                     method: "POST",
                     headers: {
-                        "Content-Type": "aplication/json"
+                        "Content-Type": "aplication/json",
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         name: service.name,

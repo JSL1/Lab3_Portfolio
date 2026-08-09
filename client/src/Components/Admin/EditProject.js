@@ -6,6 +6,7 @@ import SaveIcon from '../../Assets/save.png';
 import DeleteIcon from '../../Assets/delete.png';
 import { Link } from 'react-router-dom';
 import Confirmation from './Confirmation';
+import { useSelector } from "react-redux";
 
 const EditProject = () => {
     const [projects, setProjects] = useState([]);
@@ -35,6 +36,7 @@ const EditProject = () => {
                 {
                     method: "DELETE",
                     headers: {
+                        "Authorization": `Bearer ${token}`,
                         "Content-Type": "application/json"
                     }
                 }
@@ -62,6 +64,7 @@ const EditProject = () => {
                 {
                     method: "POST",
                     headers: {
+                        "Authorization": `Bearer ${token}`
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
