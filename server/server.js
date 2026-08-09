@@ -20,7 +20,15 @@ app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
 
 app.use(morgan('combined'));
-app.use(cors());
+
+const allowedOrigins = [
+    "http://localhost:3000",
+    "https://lab4portfolio.onrender.com"
+];
+
+app.use(cors({
+    origin: allowedOrigins
+}));
 
 //import routers
 let indexRouter = require('./routes/index');
