@@ -14,14 +14,10 @@ const authRoutes = require('./routes/authRoutes');
 var app = express();
 
 app.use(cors());
-
-connectDB();
-
-app.use('/api/auth', authRoutes);
 app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
-
 app.use(morgan('combined'));
+app.use('/api/auth', authRoutes);
 
 //import routers
 let indexRouter = require('./routes/index');
