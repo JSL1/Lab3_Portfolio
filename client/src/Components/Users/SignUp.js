@@ -23,22 +23,21 @@ const SignUp = () => {
 
     const createUser = async () => {
         console.log("SENDING:", credentials);
-            try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(credentials)
-                });
-                console.log("STATUS:", response.status);
-                const result = await response.json();
-                console.log("RESPONSE:", result);
-                setShowConfirmation(true);
-            } catch(err) {
-                console.log(err);
-            }
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(credentials)
+            });
+            console.log("STATUS:", response.status);
+            const result = await response.json();
+            console.log("RESPONSE:", result);
+            setShowConfirmation(true);
+        } catch(err) {
+            console.log(err);
         }
     };
 
