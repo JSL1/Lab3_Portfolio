@@ -16,7 +16,7 @@ const signup = async (req, res) => {
         }
 
         const existingUser = await User.findOne({ email });
-
+            
         if (existingUser) {
             return res.status(409).json({
                 success: false,
@@ -58,7 +58,10 @@ const login = async (req, res) => {
 
         //find the user
         const user = await User.findOne({ email });
-
+        
+        console.log("LOGIN EMAIL:", email);
+        console.log("USER FOUND:", user ? "YES" : "NO");
+        
         if(!user) {
             return res.status(401).json({
                 success: false,
@@ -68,6 +71,7 @@ const login = async (req, res) => {
 
         //check password
         const passwordMatch = await bcrypt.compare(password, user.password);
+        console.log("PASSWORD MATCH:", passwordMatch);
 
         if(!passwordMatch) {
             return res.status(401).json({
@@ -92,7 +96,13 @@ const login = async (req, res) => {
         res.json({
             success: true,
             message: "Login Successful",
-            token: token
+            token: token,
+            user: {
+                id: user._id,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                email: user.email
+            }
         });
     } catch(err) {
         console.log(err);
