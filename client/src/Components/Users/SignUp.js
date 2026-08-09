@@ -67,7 +67,7 @@ const SignUp = () => {
                 <input type="email" placeholder="Email Address" className="login-form-input" name="email" value={credentials.email} onChange={handleChange} />
                 <input placeholder="Password" type="password" className="login-form-input" name="password" value={credentials.password} onChange={handleChange} />s
                 <span className="login-text">Already have an account? <Link to="../Login">Log in now. </Link></span>
-                <input type="reset" value="Reset Form" ref={password2} className="login-button" className="resetbutton" />
+                <input type="reset" value="Reset Form" className="login-button" className="resetbutton" />
                 <input type="submit" value="Sign Up" className="submitbutton" />
                 {showConfirmation && <Confirmation />}
                 <span className="messageText">{messageText}</span>
