@@ -31,7 +31,7 @@ router.delete('/references/:id', authMiddleware, referencesController.remove);
 
 //services
 router.get('/services/', servicesController.getAll);
-router.get('/services/:id' servicesController.getById);
+router.get('/services/:id', servicesController.getById);
 router.post('/services/', authMiddleware, servicesController.add);
 router.put('/services/:id', authMiddleware, servicesController.update);
 router.delete('/services/:id', authMiddleware, servicesController.remove);
