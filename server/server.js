@@ -9,7 +9,7 @@ const createError = require('http-errors');
 const morgan = require('morgan');
 const cors = require('cors');
 const connectDB = require('./db/connection');
-const authRouts = require('./routes/authRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 var app = express();
 
