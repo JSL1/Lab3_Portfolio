@@ -11,9 +11,9 @@ const cors = require('cors');
 const connectDB = require('./db/connection');
 const authRoutes = require('./routes/authRoutes');
 
-app.use(cors());
-
 var app = express();
+
+app.use(cors());
 
 connectDB();
 
