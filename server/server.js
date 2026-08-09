@@ -41,7 +41,7 @@ app.use((err, req, res, next) => {
         },
     });
 });
-
+connectDB();
 app.listen(PORT);
 console.log('Server running at http://localhost:3000/');
 module.exports = app;
